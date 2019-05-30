@@ -38,7 +38,7 @@ class ItemForm extends React.Component {
         <button onClick={this.addItem}>Add Task</button>
         <button onClick={this.removeCompleted}>Remove Completed</button>
       </form>
-    //   onSubmit={this.addItem}
+    //   onSubmit={this.addItem} NO
     );
   }
 }
