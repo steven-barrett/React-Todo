@@ -65,6 +65,8 @@ class App extends React.Component {
           taskItems={this.state.taskData}
           toggleItem={this.toggleItem}
         />
+        <input type="text" className="input" onChange={this.handleChange} placeholder="Search..." 
+        />
         <ItemForm removeCompleted={this.removeCompleted} addItem={this.addItem}  />
       </div>
     );

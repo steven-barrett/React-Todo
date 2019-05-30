@@ -14,6 +14,9 @@ class ItemForm extends React.Component {
   };
   addItem = e => {    
     e.preventDefault();
+    if (e.target.value === ''){
+        return;
+    }
     this.props.addItem(this.state.item);
     this.setState({
       item: ""
