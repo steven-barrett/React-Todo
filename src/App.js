@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { data } from './components/data';
-import Task from './components/TodoComponents/Task';
 import TaskList from './components/TodoComponents/TodoList';
 import ItemForm from './components/TodoComponents/TodoForm';
 
@@ -73,6 +72,4 @@ class App extends React.Component {
 }
 
 export default App;
-
-{/* <div className='task-list'> */}
 
