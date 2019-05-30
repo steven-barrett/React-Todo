@@ -19,9 +19,18 @@ html {
 }
 
 h1 {
-  margin: 0;
-  padding: 16px 0;
-  color: white;
+  text-align: center;
+  background: #fff;
+  border-radius: 2px;
+  display: flex;
+  max-height: 200px;
+  margin: 1rem;
+  padding: 1rem;  
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  background-color: darkgrey;
+  display: block;
+  margin: auto;
+  color: black;
 }
 
 .task-card {
@@ -33,7 +42,11 @@ h1 {
   padding: 1rem;
   width: 400px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  background-color: rgb(103, 190, 219);
+  background-color: rgb(127, 204, 127);
+}
+.task-card.completed {
+  background-color: #d17d7c;
+  text-decoration: line-through;
 }
 
 img {

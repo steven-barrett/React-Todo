@@ -1,20 +1,20 @@
 
 export const data = [
     {
-        task: 'Grocery Shopping',
-        id: Date.now(),
+        name: 'Grocery Shopping',
+        id: Date.now() + 1,
         completed: false
     },
 
     {
-        task: 'Soccer Practice',
-        id: Date.now(),
+        name: 'Soccer Practice',
+        id: Date.now() + 2,
         completed: false
     },
 
     {
-        task: 'Laundry',
-        id: Date.now(),
+        name: 'Laundry',
+        id: Date.now() + 3,
         completed: false
     }
 ]

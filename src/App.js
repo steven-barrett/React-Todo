@@ -2,78 +2,77 @@ import React from 'react';
 
 import { data } from './components/data';
 import Task from './components/TodoComponents/Task';
+import TaskList from './components/TodoComponents/TodoList';
+import ItemForm from './components/TodoComponents/TodoForm';
 
 import './Task.css';
 
+
 class App extends React.Component {
-  // you will need a place to store your state in this component.
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
   constructor() {
     super();
     this.state = {
-      taskData: data,
-      task: '',
-      id: 0,
-      completed: false
-    }
+      taskData: data
+    };
   }
-
-  addTask = e => {
-    e.preventDefault();
-    if (this.state.task === '') {
-      return;
-    }
-    const newTask = {
-      task: this.state.task,
-      id: Date.now(),
-      completed: false
-    }
-    this.setState({
-      taskData: [...this.state.taskData, newTask],
-      task: '',
-      id: 0,
-      completed: false
-    });
-  }
-
-  handleChanges = event => {    
-    this.setState({      
-      [event.target.name]: event.target.value,
-      id: Date.now,
-      completed: 'false'      
+  toggleItem = id => {
+    // loop through this.state.taskData
+    // find the item I clicked on
+    // toggle the purchased property
+    this.setState(prevState => {
+      return {
+        taskData: prevState.taskData.map(item => {
+          if (item.id === id) {
+            return {
+              ...item,
+              completed: !item.completed
+            };
+          } else {
+            return item;
+          }
+        })
+      };
     });
   };
-  setCompletedState = event => {
-    console.log(event);
-  }
+
+  addItem = itemName => {
+    // add an item from the form to our list
+    const newItem = {
+      name: itemName,
+      id: Date.now(),
+      completed: false
+    };
+    this.setState(prevState => {
+      return {
+        taskData: [...prevState.taskData, newItem]
+      };
+    });
+  };
+  removeCompleted = () => {  
+    this.setState(prevState => {
+      return {
+        taskData: [...prevState.taskData].filter(item => !item.completed)
+    };
+    });  
+  };
+
   render() {
     return (
-      <div className='task-list' onClick = {this.setCompletedState}>
-        <h1>ToDo:</h1>
-        {this.state.taskData.map(task => (
-          <Task taskInfo={task} />
-        ))}
-                   
-      <form onSubmit={this.addTask}>
-      <input
-          placeholder="Task"
-          onChange={this.handleChanges}
-          value={this.state.task}
-          name="task"
+      <div className="App">
+        <div className="header">
+          <h1>Todo List</h1>
+        </div>
+        <TaskList
+          taskItems={this.state.taskData}
+          toggleItem={this.toggleItem}
         />
-        {/* <input
-          placeholder="Enter id to complete the task"
-          onChange={this.handleChanges}
-          value={this.state.task}
-          name="completed"
-        />
-          <button>Complete Task</button> */}
-          <button>Clear Completed</button>
-      </form>
+        <ItemForm removeCompleted={this.removeCompleted} addItem={this.addItem}  />
       </div>
     );
   }
 }
 
 export default App;
+
+{/* <div className='task-list'> */}
+
